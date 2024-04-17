@@ -4,13 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>@yield('title')</title>
+    <meta name="favicon"content="{{ asset('storage/' . str_replace('\\', '/', setting('admin.icon_image')))  }}">
+    <title>
+        @yield('title')
+    </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
+    {{ setting('scripts.header') }}
 </head>
 
 <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" class="bg-gray-50 home-one"
@@ -113,6 +115,7 @@
                                             class="text-xs leading-6 text-qblack font-500">Support</span></a></li>
                             </ul>
                         </div>
+                        @livewire('currency-switcher')
                     </div>
                 </div>
                 <div class=" lg:hidden block w-full h-[60px] bg-white ">
@@ -135,30 +138,7 @@
                     </div>
                 </div>
                 {{-- Header search bar --}}
-                <div class="w-full h-[86px] bg-white quomodo-shop-middle-bar lg:block hidden">
-                    <div class="max-w-[1216px] mx-auto h-full">
-                        <div class="relative h-full">
-                            <div class="flex items-center justify-between h-full">
-                                <div><a href="/"><img width="152" height="36"
-                                            src="{{ asset('storage/' . setting('site.logo')) }}" alt="logo"></a>
-                                </div>
-                                <div class="w-[517px] h-[44px]">
-                                    <div
-                                        class="flex items-center w-full h-full bg-white border border-qgray-border search-com">
-                                        <div class="flex w-full h-full bg-red-500">
-                                            <input type="text"
-                                                class="w-full h-full pl-5 text-xs font-medium leading-4"
-                                                placeholder="Search Product...">
-                                        </div>
-                                        <button class=" w-[93px] h-full text-sm font-600  search-btn"
-                                            type="button">Search
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @livewire('search-bar')
             </div>
         </header>
 
@@ -305,5 +285,5 @@
         </footer>
     </div>
 </body>
-
+{{ setting('scripts.footer') }}
 </html>

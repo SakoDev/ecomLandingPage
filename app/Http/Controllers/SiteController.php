@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,16 @@ class SiteController extends Controller
         return view('single-product', [
             'product' => $product
         ]);
+    }
+    public function page($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        return view('page-view', [
+            'page' => $page
+        ]);
+    }
+    public function thanksPage($tracking_number)
+    {
+        return view('thanks-page', compact('tracking_number'));
     }
 }
