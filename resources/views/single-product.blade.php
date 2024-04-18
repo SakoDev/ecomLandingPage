@@ -20,29 +20,9 @@
                 <div class="w-full bg-white pb-[10px]">
                     <div class="mx-auto max-w-[1216px]">
                         <div class="justify-between w-full product-view lg:flex ">
-                            <div data-aos="fade-right" class="lg:w-1/2 xl:mr-[70px] lg:mr-[50px] aos-init"
-                                x-data="{ selectedImage: '{{ asset('storage/' . str_replace('\\', '/', $product->getPrincipalImage())) }}' }">
-                                <div class="w-full">
-                                    <div
-                                        class="w-full h-[500px] flex justify-center items-center overflow-hidden relative mb-3">
-                                        <img x-src="selectedImage" alt="" class="object-contain">
-                                        <div
-                                            class="w-[80px] h-[80px] rounded-full bg-qyellow text-qblack flex justify-center items-center text-xl font-medium absolute left-[30px] top-[30px]">
-                                            <span>-50%</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2">
-                                        @foreach ($product->images as $item)
-                                            <div class="w-[110px] h-[110px] p-[15px] cursor-pointer"
-                                                @click="selectedImage = '{{ asset('storage/' . $item->image) }}'">
-                                                <img src="{{ asset('storage/' . $item->image) }}" alt=""
-                                                    class="object-contain w-full h-full">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+                            <div class="lg:w-1/2 xl:mr-[70px] lg:mr-[50px] aos-init" >
+                            @livewire('product-images', ['product' => $product])
                             </div>
-
                             <div class="flex-1">
                                 <div class="w-full mt-10 product-details lg:mt-0"><span data-aos="fade-up"
                                         class="inline-block mb-2 text-xs font-normal tracking-wider uppercase text-qgray aos-init">{{ $product->category->name }}</span>
@@ -105,9 +85,7 @@
                 <div class="tab-contents w-full min-h-[400px] ">
                     <div class="mx-auto max-w-[1216px]">
                         <div class="w-full tab-content-item ">
-                            {!! $description !!}
-
-                            <div id="livewire-container"></div>
+                            @livewire('product-description',['product'=>$product])
                         </div>
                     </div>
                 </div>
@@ -115,12 +93,4 @@
             @livewire('related-product')
         </div>
     </div>
-
-    @push('scripts')
-        <script>
-            document.addEventListener('livewire:init', function() {
-                Livewire.dispatch('renderComponent', 'apply-form', {!! json_encode($product) !!});
-            });
-        </script>
-    @endpush
 @endsection

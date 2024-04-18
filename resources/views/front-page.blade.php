@@ -10,7 +10,7 @@
                 <div class="w-full main-wrapper">
                     <div class="banner-card xl:flex xl:space-x-[30px] xl:h-[600px]  mb-[30px]">
                         <div data-aos="fade-right" class="xl:w-[740px] w-full h-full aos-init aos-animate">
-                            <a href="/single-product">
+                            <a href="{{ setting('banners.banner1url') }}">
                                 <picture>
                                     <source media="(min-width:1025px)"
                                         srcset="{{ asset('storage/' . setting('banners.banner1')) }}">
@@ -21,10 +21,10 @@
                         </div>
                         <div data-aos="fade-left"
                             class="flex-1 flex xl:flex-col flex-row xl:space-y-[30px] h-full aos-init aos-animate">
-                            <div class="w-full xl:h-1/2"><a href="/single-product"><img
+                            <div class="w-full xl:h-1/2"><a href="{{ setting('banners.banner2url') }}"><img
                                         src="{{ asset('storage/' . setting('banners.banner2')) }}" alt=""
                                         class="w-full h-full"></a></div>
-                            <div class="w-full xl:h-1/2"><a href="/single-product"><img
+                            <div class="w-full xl:h-1/2"><a href="{{ setting('banners.banner3url') }}"><img
                                         src="{{ asset('storage/' . setting('banners.banner3')) }}" alt=""
                                         class="w-full h-full"></a></div>
                         </div>

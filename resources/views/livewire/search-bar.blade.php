@@ -10,9 +10,9 @@
                         <div class="flex items-center w-full h-full bg-white border border-qgray-border search-com">
                             <input wire:model.live="search" type="text"
                                 class="w-full h-full pl-5 text-xs font-medium leading-4"
-                                placeholder="Search Product...">
+                                placeholder="{{ __('app.SearchPlaceholder') }}">
                             <button class="w-[93px] h-full text-sm font-semibold search-btn" type="button"
-                                wire:click="searchProduct">Search</button>
+                                wire:click="searchProduct">{{ __('app.Search') }}</button>
                         </div>
                         @if (count($products) > 0 && strlen($search) > 2)
                             <div class="absolute w-[400px] bg-white shadow-lg p-[10px]">
@@ -49,7 +49,7 @@
                         @elseif ($search)
                             <div class="absolute w-[400px] bg-white shadow-lg p-[10px] ">
                                 <ul>
-                                    <li>No products found</li>
+                                    <li>{{ __('app.NoProduct') }}</li>
                                 </ul>
                             </div>
                         @endif

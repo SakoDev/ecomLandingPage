@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="favicon"content="{{ asset('storage/' . str_replace('\\', '/', setting('admin.icon_image')))  }}">
+    <meta name="favicon"content="{{ asset('storage/' . str_replace('\\', '/', setting('admin.icon_image'))) }}">
     <title>
         @yield('title')
     </title>
@@ -41,7 +41,7 @@
                 <div class="search-bar w-full h-[34px]  flex ">
                     <div class="flex-1 bg-white h-full border border-r-0 border-[#E9E9E9]"><input type="text"
                             class="w-full text-xs h-full focus:outline-none foucus:ring-0 placeholder:text-qgraytwo pl-2.5 "
-                            placeholder="Search Product..."></div>
+                            placeholder="{{ __('app.SearchPlaceholder') }}"></div>
                     <div class="w-[40px] h-full bg-qyellow flex justify-center items-center"><span><svg width="23"
                                 height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="flex items-center w-full px-5 mt-5 space-x-3"><span
-                    class="text-base font-semibold text-qblack">Categories</span><span
+                    class="text-base font-semibold text-qblack">{{ __('app.Categories') }}</span><span
                     class="w-[1px] h-[14px] bg-qgray"></span><span class="text-base font-semibold text-qgray ">Main
                     Menu</span></div>
             <div class="w-full mt-5 category-item">
@@ -108,14 +108,21 @@
                     <div class="flex items-center justify-between h-full ">
                         <div class="topbar-nav">
                             <ul class="flex space-x-6">
-                                <li><a href="/tracking-order"><span class="text-xs leading-6 text-qblack font-500">Track
-                                            Order</span></a>
+                                <li><a href="/tracking-order"><span
+                                            class="text-xs leading-6 text-qblack font-500">{{ __('app.Track Order') }}</span></a>
                                 </li>
-                                <li><a href="/faq"><span
-                                            class="text-xs leading-6 text-qblack font-500">Support</span></a></li>
+                                <li><a href="/faq">
+                                        <span
+                                            class="text-xs leading-6 text-qblack font-500">{{ __('app.Support') }}</span></a>
+                                </li>
                             </ul>
                         </div>
-                        @livewire('currency-switcher')
+                        <div class="hidden topbar-dropdowns sm:block">
+                            <div class="flex space-x-6">
+                                @livewire('language-dropdown')
+                                @livewire('currency-switcher')
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class=" lg:hidden block w-full h-[60px] bg-white ">
@@ -124,8 +131,8 @@
                                 stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path>
                             </svg></div>
-                        <div><a href="/"><img width="152" height="36" src="{{ asset('storage/' . setting('site.logo')) }}"
-                                    alt="logo"></a></div>
+                        <div><a href="/"><img width="152" height="36"
+                                    src="{{ asset('storage/' . setting('site.logo')) }}" alt="logo"></a></div>
                         <div class="relative cursor-pointer cart"><a href="/cart"><span><svg width="18"
                                         height="20" viewBox="0 0 18 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -148,11 +155,12 @@
             style="background: url({{ asset('storage/default/discount-banner-1.jpg') }}) 0% 0% / cover no-repeat;">
             <div>
                 <div data-aos="fade-up" class="aos-init">
-                    <h1 class="mb-2 text-xl font-bold text-center text-black sm:text-3xl">Get <span
-                            class="mx-1 text-yellow-500">20%</span> Off Discount Coupon</h1>
-                    <p class="text-center sm:text-[18px] text-sm font-normal">by Subscribe our Newsletter</p>
+                    <h1 class="mb-2 text-xl font-bold text-center text-black sm:text-3xl">Get
+                        <span class="mx-1 text-yellow-500">20%</span> Off Discount Coupon
+                    </h1>
+                    <p class="text-center sm:text-[18px] text-sm font-normal">{{ __('app.Newsletter') }}</p>
                 </div>
-                <div data-aos="fade-right" class="sm:w-[543px] w-[300px] h-[54px] flex mt-8 aos-init">
+                <div class="sm:w-[543px] w-[300px] h-[54px] flex mt-8 aos-init">
                     <div
                         class="flex items-center flex-1 h-full pl-4 space-x-2 text-black bg-white focus-within:text-yellow-500">
                         <span><svg width="17" height="15" viewBox="0 0 17 15" fill="none"
@@ -166,8 +174,8 @@
                             </svg></span><input type="email" name="email"
                             class="w-full h-full text-sm tracking-wider focus:outline-none placeholder:text-xs placeholder:text-qblack text-qblack font-400"
                             placeholder="EMAIL ADDRESS">
-                    </div><button type="button" class="sm:w-[158px] w-[80px]  h-full bg-yellow-400 text-sm font-semibold">Get
-                        the Coupon</button>
+                    </div><button type="button"
+                        class="sm:w-[158px] w-[80px]  h-full bg-yellow-400 text-sm font-semibold">{{ __('app.GetCoupon') }}</button>
                 </div>
             </div>
         </div>
@@ -275,11 +283,11 @@
                                 </svg></a></div>
                         <span class="sm:text-base text-[10px] text-gray-500 font-normal">©{{ date('Y') }}<a
                                 href="{{ route('index') }}" target="_blank" rel="noreferrer"
-                                class="mx-1 font-normal text-black">{{ setting('site.title') }}</a>All rights
-                            reserved</span>
+                                class="mx-1 font-normal text-black">{{ setting('site.title') }}</a>{{ __('app.Rights') }}</span>
                     </div>
-                    <div class=""><a href="#"><img width="318" height="28"
-                                src="/assets/images/payment-getways.png" alt="payment-getways"></a></div>
+                    <div class="">
+
+                    </div>
                 </div>
             </div>
         </footer>
@@ -288,4 +296,5 @@
 
 @stack('scripts')
 {{ setting('scripts.footer') }}
+
 </html>
