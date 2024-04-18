@@ -285,5 +285,7 @@
         </footer>
     </div>
 </body>
+
+@stack('scripts')
 {{ setting('scripts.footer') }}
 </html>

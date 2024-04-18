@@ -1,9 +1,12 @@
 <div>
-    <div class="flex items-center space-x-2 mb-7 aos-init"><span
+    <div class="flex items-center space-x-2 mb-7 aos-init">
+        <span
             class="mt-2 text-sm font-semibold text-gray-900 line-through">{{ $symbol }}
-            {{ number_format($product->specialPrice * $exchangeRate, 2) }}</span><span
+            {{ number_format($product->specialPrice * $exchangeRate, 2) }}</span>
+            <span
             class="text-2xl font-bold text-red-500">{{ $symbol }}
-            {{ number_format($product->price * $exchangeRate, 2) }}</span></div>
+            {{ number_format($product->price * $exchangeRate, 2) }}</span>
+    </div>
 
     <form wire:submit.prevent="submit" class="mb-[30px]">
         <div class="w-full flex items-center h-[50px] space-x-[10px] mb-3 aos-init">

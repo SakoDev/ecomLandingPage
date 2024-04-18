@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Livewire\ApplyForm;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 
 class SiteController extends Controller
 {
@@ -16,12 +18,17 @@ class SiteController extends Controller
             'products' => Product::where('isPublished', true)->get(),
         ]);
     }
-    
+
     public function singleProduct($slug)
     {
         $product = Product::where('slug', $slug)->first();
+        $description = $product->description;
+        
+        $description = str_replace('<!--LIVEWIRE_COMPONENT-->', "<livewire:apply-form :product=\"\$product\" />", $description);
+
         return view('single-product', [
-            'product' => $product
+            'product' => $product,
+            'description' => $description
         ]);
     }
     public function page($slug)

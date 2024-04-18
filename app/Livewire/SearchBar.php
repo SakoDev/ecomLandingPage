@@ -14,7 +14,7 @@ class SearchBar extends Component
     public $selectedCurrency, $exchangeRate, $symbol;
 
     protected $queryString = [
-        'search' => ['except' => ''],
+        'search'
     ];
 
     #[On('currencyChanged')]

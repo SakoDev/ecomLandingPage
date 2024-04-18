@@ -105,7 +105,9 @@
                 <div class="tab-contents w-full min-h-[400px] ">
                     <div class="mx-auto max-w-[1216px]">
                         <div class="w-full tab-content-item ">
-                            {!! $product->description !!}
+                            {!! $description !!}
+
+                            <div id="livewire-container"></div>
                         </div>
                     </div>
                 </div>
@@ -113,4 +115,12 @@
             @livewire('related-product')
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            document.addEventListener('livewire:init', function() {
+                Livewire.dispatch('renderComponent', 'apply-form', {!! json_encode($product) !!});
+            });
+        </script>
+    @endpush
 @endsection

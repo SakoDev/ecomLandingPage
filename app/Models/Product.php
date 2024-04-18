@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Translatable;
 
 class Product extends Model
 {
     use HasFactory;
-    public function images()
-    {
+    use Translatable;
+    protected $translatable = ['name','description'];
+
+    public function images(){
         return $this->hasMany(ProductImage::class);
     }
     public function category(){
