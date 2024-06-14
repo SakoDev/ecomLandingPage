@@ -4,18 +4,103 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="favicon"content="{{ asset('storage/' . str_replace('\\', '/', setting('admin.icon_image'))) }}">
-    <title>
-        @yield('title')
-    </title>
+    <meta name="description" content="{{ setting('site.description') }}">
+    <meta name="keywords" content="{{ setting('site.keyword') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/png"
+        href="{{ asset('storage/' . str_replace('\\', '/', setting('site.favicon'))) }}">
+
+    @if (setting('site.google_analytics_tracking_id'))
+        <!-- Google Tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ setting('site.google_analytics_tracking_id') }}">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', '{{ setting('site.google_analytics_tracking_id') }}');
+        </script>
+    @endif
+    @if (setting('site.facebook_pixel_id'))
+        <!-- Facebook Pixel Code -->
+        <script>
+            ! function(f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function() {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '{{ setting('site.facebook_pixel_id') }}');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+                src="https://www.facebook.com/tr?id={{ setting('site.facebook_pixel_id') }}&ev=PageView&noscript=1" /></noscript>
+    @endif
+    @if (setting('site.tiktok_pixel_id'))
+        <!-- TikTok Pixel Code -->
+        <script>
+            ! function(w, d, t) {
+                w.TiktokAnalyticsObject = t;
+                var ttq = w[t] = w[t] || [];
+                ttq.methods = ["pageview", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias",
+                    "group", "enableCookie", "disableCookie"
+                ];
+                ttq.setAndDefer = function(t, e) {
+                    t[e] = function() {
+                        t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                    }
+                };
+                for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+                ttq.instance = function(t) {
+                    for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+                    return e
+                };
+                ttq.load = function(e, n) {
+                    var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+                    ttq._i = ttq._i || {};
+                    ttq._i[e] = [];
+                    ttq._i[e]._u = i;
+                    ttq._t = ttq._t || {};
+                    ttq._t[e] = +new Date;
+                    ttq._o = ttq._o || {};
+                    ttq._o[e] = n || {};
+                    var o = document.createElement("script");
+                    o.type = "text/javascript";
+                    o.async = !0;
+                    o.src = i + "?sdkid=" + e + "&lib=" + t;
+                    var a = document.getElementsByTagName("script")[0];
+                    a.parentNode.insertBefore(o, a)
+                };
+                ttq.load('{{ setting('site.tiktok_pixel_id') }}');
+                ttq.pageview();
+            }(window, document, 'ttq');
+        </script>
+    @endif
+
+    <title>@yield('title')</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Fonts -->
-    <link href="{{ asset('fonts/beIN_Normal.ttf') }}" rel="stylesheet" />
-    {{ setting('scripts.header') }}
+    <link href="{{ asset('fonts/beIN_Normal.ttf') }}" rel="stylesheet">
+
+    {!! setting('scripts.header') !!}
 </head>
 
-<body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" class="bg-gray-50 home-one"
-    data-new-gr-c-s-check-loaded="14.1167.0" data-gr-ext-installed="">
+<body class="bg-gray-50 home-one">
     {{-- mobile side bar --}}
     <div class="relative hidden w-full h-full drawer-wrapper">
         <div
@@ -126,9 +211,10 @@
                 </div>
                 <div class=" lg:hidden block w-full h-[60px] bg-white ">
                     <div class="flex items-center justify-between w-full h-full px-5">
-                        <div><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path>
+                        <div><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7">
+                                </path>
                             </svg></div>
                         <div><a href="/"><img width="152" height="36"
                                     src="{{ asset('storage/' . setting('site.logo')) }}" alt="logo"></a></div>

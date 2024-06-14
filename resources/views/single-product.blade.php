@@ -35,16 +35,18 @@
                     </div>
                 </div>
             </div>
-            <div class="product-des-wrapper w-full relative pb-[60px]">
+            <div class="relative w-full pb-1 mt-1 product-des-wrapper lg:mt-4">
                 <div class="tab-contents w-full min-h-[400px] ">
                     <div class="mx-auto max-w-[1216px]">
-                        <div class="w-full tab-content-item ">
+                        <div class="w-full lg:w-1/2 tab-content-item ">
                             @livewire('product-description', ['product' => $product])
                         </div>
                     </div>
                 </div>
             </div>
-            @livewire('related-product')
+            
         </div>
     </div>
+    @livewire('best-services')
+    @livewire('related-product')
 @endsection
