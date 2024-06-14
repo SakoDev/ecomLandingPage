@@ -13,7 +13,7 @@ class TrackingOrder extends Component
     protected $statusMap = [
         "New" => "Order placed",
         "Confirmed" => "Confirmed",
-        "Shipped" => "Shipped",
+        "Codsented" => "Shipped",
         "Delivered" => "Delivered",
         "Cancelled" => "Order cancelled",
         "Refunded" => "The order has been refunded"
