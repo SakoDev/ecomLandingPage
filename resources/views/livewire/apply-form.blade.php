@@ -1,15 +1,13 @@
 <div>
-    <div class="flex items-center space-x-2 mb-7 aos-init">
-        <span
-            class="mt-2 text-sm font-semibold text-gray-900 line-through">{{ $symbol }}
+    <div class="flex items-center space-x-2 mb-7 ">
+        <span class="mt-2 text-sm font-semibold text-gray-900 line-through">{{ $symbol }}
             {{ number_format($product->specialPrice * $exchangeRate, 2) }}</span>
-            <span
-            class="text-2xl font-bold text-red-500">{{ $symbol }}
+        <span class="text-2xl font-bold text-red-500">{{ $symbol }}
             {{ number_format($product->price * $exchangeRate, 2) }}</span>
     </div>
 
     <form wire:submit.prevent="submit" class="mb-[30px]">
-        <div class="w-full flex items-center h-[50px] space-x-[10px] mb-3 aos-init">
+        <div class="w-full flex items-center h-[50px] space-x-[10px] mb-3 ">
             <div
                 class="flex items-center flex-1 h-full pl-4 space-x-2 text-black bg-white border border-gray-300 focus-within:text-yellow-400">
                 <span>
@@ -20,7 +18,7 @@
                     </svg>
                 </span>
                 <input type="text" wire:model="name"
-                    class="w-full h-full text-sm tracking-wider text-black focus:outline-none placeholder:text-xs placeholder:text-black font-400"
+                    class="w-full h-full text-sm text-black focus:outline-none placeholder:text-xs placeholder:text-black"
                     placeholder="ENTER YOUR NAME HERE">
 
             </div>
@@ -31,7 +29,7 @@
             </div>
         @enderror
 
-        <div class="w-full flex items-center h-[50px] space-x-[10px] mb-3 aos-init">
+        <div class="w-full flex items-center h-[50px] space-x-[10px] mb-3 ">
             <div
                 class="flex items-center flex-1 h-full pl-4 space-x-2 text-black bg-white border border-gray-300 focus-within:text-yellow-400">
                 <span>
@@ -42,7 +40,7 @@
                     </svg>
                 </span>
                 <input type="text" wire:model="phone_number"
-                    class="w-full h-full text-sm tracking-wider text-black focus:outline-none placeholder:text-xs placeholder:text-black font-400"
+                    class="w-full h-full text-sm text-black focus:outline-none placeholder:text-xs placeholder:text-black "
                     placeholder="ENTER YOUR PHONE NUMBER">
             </div>
 
@@ -63,7 +61,7 @@
                     </svg>
                 </span>
                 <input type="text" wire:model="address"
-                    class="w-full h-full text-sm tracking-wider text-black focus:outline-none placeholder:text-xs placeholder:text-black font-400"
+                    class="w-full h-full text-sm text-black focus:outline-none placeholder:text-xs placeholder:text-black font-400"
                     placeholder="ENTER YOUR ADDRESS">
             </div>
         </div>
@@ -76,7 +74,7 @@
             <div class="w-[120px] h-full px-[26px] flex items-center border border-gray-500">
                 <div class="flex items-center justify-between w-full">
                     <button type="button" class="text-base text-gray-700 " wire:click="decrement">-</button>
-                    <span class="text-qblack">{{ $quantity }}</span>
+                    <span class="text-black">{{ $quantity }}</span>
                     <button type="button" class="text-base text-gray-700 " wire:click="increment">+</button>
                 </div>
             </div>
@@ -86,5 +84,9 @@
                     now</button>
             </div>
         </div>
+        @if ($quantity > 1)
+            <div class="flex w-full mx-1 text-lg font-medium"><strong class="me-2"> Total:
+                </strong>{{ $quantity * number_format($product->price * $exchangeRate, 2) }} {{ $symbol }}</div>
+        @endif
     </form>
 </div>

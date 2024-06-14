@@ -6,7 +6,11 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                beIN_Normal: "beIN Normal, cairo", 
+            },
+        },
     },
     plugins: [],
 };

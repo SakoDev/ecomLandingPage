@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Bein Normal';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(/fonts/beIN_Normal.ttf) format('ttf');
+    }
+}

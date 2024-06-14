@@ -14,6 +14,12 @@ class Order extends Model
         'address',
         'quantity',
         'tracking_number',
-        'product_id'
+        'product_id',
+        'subtotal'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

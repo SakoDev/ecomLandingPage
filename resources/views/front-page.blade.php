@@ -7,7 +7,7 @@
         <div class="w-5 h-5 btn "></div>
         <div class="w-full banner-wrapper my-[60px]">
             <div class="max-w-[1216px] mx-auto">
-                <div class="w-full main-wrapper">
+                <div class="w-full main-wrapper" wire:ignore>
                     <div class="banner-card xl:flex xl:space-x-[30px] xl:h-[600px]  mb-[30px]">
                         <div data-aos="fade-right" class="xl:w-[740px] w-full h-full aos-init aos-animate">
                             <a href="{{ setting('banners.banner1url') }}">

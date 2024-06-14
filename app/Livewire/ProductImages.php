@@ -17,7 +17,7 @@ class ProductImages extends Component
 
     public function changeImage($imagePath)
     {
-        $this->selectedImage = asset('storage/' . $imagePath);
+        $this->selectedImage = $imagePath;
     }
 
     public function render()

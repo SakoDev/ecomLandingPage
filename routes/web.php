@@ -21,6 +21,7 @@ Route::get('/', [SiteController::class, 'index'])->name('index')->middleware('de
 Route::get('/single-product/{slug}', [SiteController::class, 'singleProduct'])->name('single-product');
 Route::get('/thanks-page/{tracking_number}', [SiteController::class, 'thanksPage'])->name('thanks-page');
 Route::get('/page/{slug}', [SiteController::class, 'page'])->name('page');
+Route::get('/tracking-order', [SiteController::class, 'trackingOrder'])->name('trackingOrder');
 
 Route::get('/lang/{locale}', function ($locale) {
     $supportedLocales = ['en', 'ar', 'fr'];

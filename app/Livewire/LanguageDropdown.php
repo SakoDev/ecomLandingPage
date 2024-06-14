@@ -18,9 +18,9 @@ class LanguageDropdown extends Component
     public function changeLocale($locale)
     {
         $supportedLocales = ['en', 'ar', 'fr'];
-        
+
         if (in_array($locale, $supportedLocales)) {
-            $this->redirect('/lang/', $locale, $navigate = true);
+            Route::redirect('/lang/' . $locale);
         }
     }
 

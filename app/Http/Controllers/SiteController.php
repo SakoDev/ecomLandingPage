@@ -42,4 +42,8 @@ class SiteController extends Controller
     {
         return view('thanks-page', compact('tracking_number'));
     }
+
+    public function trackingOrder(){
+        return view('tracking-order');
+    }
 }

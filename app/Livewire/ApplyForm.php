@@ -21,7 +21,6 @@ class ApplyForm extends Component
     #[On('renderComponent')]
     public function renderComponent($componentName, $product)
     {
-        dd('disptshed');
         if ($componentName === 'apply-form') {
             $this->product = $product;
             $this->fetchExchangeRate();
@@ -77,6 +76,7 @@ class ApplyForm extends Component
             'phone_number' => $this->phone_number,
             'address' => $this->address,
             'quantity' => $this->quantity,
+            'subtotal' => $this->product->price * $this->quantity,
             'tracking_number' => $tracking_number,
         ]);
         if ($order) {
