@@ -93,9 +93,8 @@
     @endif
 
     <title>@yield('title')</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="{{ asset('fonts/beIN_Normal.ttf') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {!! setting('scripts.header') !!}
 </head>
@@ -104,7 +103,7 @@
     {{-- mobile side bar --}}
     <div class="relative hidden w-full h-full drawer-wrapper">
         <div
-            class="w-[280px] transition-all duration-300 ease-in-out h-screen overflow-y-auto overflow-x-hidden overflow-style-none bg-white fixed left-0 top-0 z-50 -left-[280px]">
+            class="w-[280px] transition-all duration-300 ease-in-out h-screen overflow-y-auto overflow-x-hidden overflow-style-none bg-white fixed left-0 top-0 z-50 ">
             <div class="w-full px-5 mt-5 mb-4">
                 <div class="flex items-center justify-between">
                     <button type="button"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"
